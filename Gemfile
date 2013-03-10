@@ -36,5 +36,5 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara',  :git => "git://github.com/jnicklas/capybara.git"
 end
