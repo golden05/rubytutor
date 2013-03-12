@@ -1,19 +1,20 @@
 require 'spec_helper'
-
 describe "StaticPages" do
-  let(:base_title) {"Ruby on Rails Tutorial Sample App"}
+  subject { page }
+
   describe "GET /static_pages" do
-    it "works! (now write some real specs)" do
-      visit '/static_pages/home'
-      page.should have_title("#{base_title} | Home")
-    end
+    before { visit root_path }
+    it { should have_title(full_title('Home')) }
   end
 
   describe "About page" do
-    it "should have the right title" do
-      visit '/static_pages/about'
-      page.should have_title("#{base_title} | About Us")
-    end
+    before { visit about_path }
+    it { should have_title(full_title('About Us')) }
   end
 
+  describe "Contact page" do
+    before { visit contact_path }
+    it { should have_selector('h1',text: 'Contact') }
+    it { should have_title(full_title('Contact')) }
+  end
 end
